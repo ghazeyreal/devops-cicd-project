@@ -31,9 +31,7 @@ jobs:
           echo "$DOCKERHUB_TOKEN" | docker login -u akinolag --password-stdin
 
       - name: Build Docker image
-        run: |
-          docker build -t akinolag/devops-cicd-project:latest .
+        run: docker build -t akinolag/devops-cicd-project:latest .
 
       - name: Push Docker image
-        run: |
-          docker push akinolag/devops-cicd-project:latest
+        run: docker push akinolag/devops-cicd-project:latest
