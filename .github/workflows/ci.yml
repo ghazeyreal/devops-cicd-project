@@ -26,19 +26,14 @@ jobs:
 
       - name: Login to Docker Hub
         env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
           DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
-          echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          echo "$DOCKERHUB_TOKEN" | docker login -u akinolag --password-stdin
 
       - name: Build Docker image
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
-          docker build -t "$DOCKERHUB_USERNAME/devops-cicd-project:latest" .
+          docker build -t akinolag/devops-cicd-project:latest .
 
       - name: Push Docker image
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
         run: |
-          docker push "$DOCKERHUB_USERNAME/devops-cicd-project:latest"
+          docker push akinolag/devops-cicd-project:latest
